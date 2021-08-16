@@ -16,7 +16,6 @@ emailInput.addEventListener('input', () => {
         showError();
     }
 });
-/*
 countryInput.addEventListener('input', () => {
     if (countryInput.validity.valid) {
         countryError.textContent = '';
@@ -33,13 +32,10 @@ zipcodeInput.addEventListener('input', () => {
         showError();
     }
 })
-*/
 
-/*
 submit.addEventListener('click', () => {
 
 })
-*/
 function showError() {
     if (emailInput.validity.valueMissing) {
         emailError.textContent = 'Please type in an email address!';
@@ -48,7 +44,6 @@ function showError() {
     } else if (emailInput.validity.tooShort) {
         emailError.textContent = 'Value is too short!';
     } 
-    /*
     if (zipcodeInput.validity.valueMissing) {
         zipcodeError.textContent = 'Please enter a zipcode!';
     } else if (/^\d+$/.test(zipcodeInput.value) == false) {
@@ -57,6 +52,5 @@ function showError() {
     } else if (zipcodeInput.validity.tooShort) {
         zipcodeError.textContent = 'Value doesn\'t meet minimum length!';
     }
-    */
 }
 showError();
