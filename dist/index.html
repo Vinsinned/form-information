@@ -5,9 +5,13 @@
 </head>
 <body>
     <form>
-        <label for='email'>What is your Email?</label>
-        <input id='email' name='email-input' type='email'>
-        <label for='country'>Please select your country</label>
+        <p>
+        <label for='email'>What is your Email?
+        <input id='email' name='email-input' type='email' minlength='8' required>
+        <span class='error'></span>
+        </label>
+            <!--
+        <label for='country'>Please select your country
         <select id='country' name='country-input'>
             <option value='usa'>USA</option>
             <option value='canada'>Canada</option>
@@ -16,13 +20,19 @@
             <option value='korea'>Korea</option>
             <option value='other'>Other</option>
         </select>
-        <label for='zipcode'>What is your zipcode?</label>
-        <input id='zipcode' name='zipcode_input' type='text'>
+        <span class='error'></span>
+        </label>
+        <label for='zipcode'>What is your zipcode?
+        <input id='zipcode' name='zipcode_input' type='text' minlength='5' maxlength='5' required>
+        <span class='error'></span>
+        </label>
         <label for='password'>Please make a password</label>
         <input id='password' name='password-input' type='password'>
         <label for='passwordConfirmation'>Please confirm your password</label>
         <input id='passwordConfirmation' name='confirmation-input' type='text'>
-        <button type='submit'>Submit</button>
+        -->
+        </p>
+        <button id='submit' type='submit'>Submit</button>
     </form>
 </body>
 <script src='bundle.js'></script>

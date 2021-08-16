@@ -1,0 +1,10 @@
+p * {
+    display: block;
+}
+.error {
+    width: 170px;
+    color: white;
+    background-color: #8E7DBE;
+    border-radius: 0 0 5px 5px;
+    padding: 0;
+}
