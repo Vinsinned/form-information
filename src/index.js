@@ -7,6 +7,8 @@ let countryInput = document.querySelector('#country');
 let countryError = document.querySelector('#country + span.error');
 let zipcodeInput = document.querySelector('#zipcode');
 let zipcodeError = document.querySelector('#zipcode + span.error');
+let passwordInput = document.querySelector('#password');
+let passwordError = document.querySelector('#password + span.error');
 
 emailInput.addEventListener('input', () => {
     if (emailInput.validity.valid) {
@@ -23,11 +25,19 @@ countryInput.addEventListener('input', () => {
     } else {
         showError();
     }
-})
+});
 zipcodeInput.addEventListener('input', () => {
     if (zipcodeInput.validity.valid) {
         zipcodeError.textContent = '';
         zipcodeError.className = 'error';
+    } else {
+        showError();
+    }
+});
+passwordInput.addEventListener('input', () => {
+    if (passwordInput.validity.valid) {
+        passwordError.textContent = '';
+        passwordError.className = 'error';
     } else {
         showError();
     }
@@ -51,6 +61,11 @@ function showError() {
         zipcodeError.textContent = 'Zipcode must be only numbers!';
     } else if (zipcodeInput.validity.tooShort) {
         zipcodeError.textContent = 'Value doesn\'t meet minimum length!';
+    }
+    if (passwordInput.validity.valueMissing) {
+        passwordError.textContent = 'Please enter a password!';
+    } else if (passwordInput.validity.tooShort) {
+        passwordError.textContent = 'The password is too short!';
     }
 }
 showError();
