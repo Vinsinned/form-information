@@ -5,6 +5,7 @@
 </head>
 <body>
     <form>
+        <div id='form'>
         <p>
             <label for='email'>What is your Email?
                 <input id='email' name='email-input' type='email' minlength='8' required>
@@ -29,12 +30,13 @@
                 <input id='password' name='password-input' minlength='6' type='password' required>
                 <span class='error'></span>
             </label>
-        <!--
-        <label for='passwordConfirmation'>Please confirm your password</label>
-        <input id='passwordConfirmation' name='confirmation-input' type='text'>
-        -->
+            <label for='passwordConfirmation'>Please confirm your password
+                <input id='passwordConfirmation' name='confirmation-input' minlength='6' type='text' required>
+                <span class='error'></span>
+            </label>
         </p>
         <button id='submit' type='submit'>Submit</button>
+        </div>
     </form>
 </body>
 <script src='bundle.js'></script>

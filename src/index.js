@@ -9,13 +9,15 @@ let zipcodeInput = document.querySelector('#zipcode');
 let zipcodeError = document.querySelector('#zipcode + span.error');
 let passwordInput = document.querySelector('#password');
 let passwordError = document.querySelector('#password + span.error');
+let confirmationInput = document.querySelector('#passwordConfirmation');
+let confirmationError = document.querySelector('#passwordConfirmation + span.error');
 
 emailInput.addEventListener('input', () => {
     if (emailInput.validity.valid) {
         emailError.textContent = '';
         emailError.className = 'error';
     } else {
-        showError();
+        showErrorEmail();
     }
 });
 countryInput.addEventListener('input', () => {
@@ -23,7 +25,7 @@ countryInput.addEventListener('input', () => {
         countryError.textContent = '';
         countryError.className = 'error';
     } else {
-        showError();
+        showErrorCounty();
     }
 });
 zipcodeInput.addEventListener('input', () => {
@@ -31,7 +33,7 @@ zipcodeInput.addEventListener('input', () => {
         zipcodeError.textContent = '';
         zipcodeError.className = 'error';
     } else {
-        showError();
+        showErrorZipcode();
     }
 });
 passwordInput.addEventListener('input', () => {
@@ -39,14 +41,29 @@ passwordInput.addEventListener('input', () => {
         passwordError.textContent = '';
         passwordError.className = 'error';
     } else {
-        showError();
+        showErrorPassword();
+    }
+});
+confirmationInput.addEventListener('input', () => {
+    if (confirmationInput.value == passwordInput.value) {
+        confirmationError.textContent = '';
+        confirmationError.className = 'error';
+    } else {
+        showErrorConfirmation();
     }
 })
 
-submit.addEventListener('click', () => {
-
+submit.addEventListener('click', (event) => {
+    if (confirmationInput.value != passwordInput.value) {
+        confirmationError.textContent = 'Password does not match!';
+    }
+    if (!emailInput.validity.valid || !zipcodeInput.validity.valid || !confirmationInput.validity.valid
+    || !passwordInput.validity.valid) {
+        event.preventDefault();
+        showError();
+    }
 })
-function showError() {
+function showErrorEmail() {
     if (emailInput.validity.valueMissing) {
         emailError.textContent = 'Please type in an email address!';
     } else if (emailInput.validity.typeMismatch) {
@@ -54,6 +71,8 @@ function showError() {
     } else if (emailInput.validity.tooShort) {
         emailError.textContent = 'Value is too short!';
     } 
+}
+function showErrorZipcode() {
     if (zipcodeInput.validity.valueMissing) {
         zipcodeError.textContent = 'Please enter a zipcode!';
     } else if (/^\d+$/.test(zipcodeInput.value) == false) {
@@ -62,10 +81,20 @@ function showError() {
     } else if (zipcodeInput.validity.tooShort) {
         zipcodeError.textContent = 'Value doesn\'t meet minimum length!';
     }
+}
+
+function showErrorPassword() {
     if (passwordInput.validity.valueMissing) {
         passwordError.textContent = 'Please enter a password!';
     } else if (passwordInput.validity.tooShort) {
         passwordError.textContent = 'The password is too short!';
     }
 }
-showError();
+
+function showErrorConfirmation() {
+    if (confirmationInput.validity.valueMissing) {
+        confirmationError.textContent = 'Please confirm your password!'
+    } else if (confirmationInput.value != passwordInput.value) {
+        confirmationError.textContent = 'Password does not match!';
+    }
+}

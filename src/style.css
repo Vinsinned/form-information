@@ -1,10 +1,28 @@
+div {
+    background-color: #D3FAD6;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.error {
+    margin-bottom: 20px;
+}
+p {
+
+}
 p * {
     display: block;
+    margin: auto;
+    text-align: center;
+}
+input:invalid {
+    border: 2px dashed red;
 }
 .error {
     width: 170px;
-    color: white;
-    background-color: #8E7DBE;
+    background-color: #C3C48D;
     border-radius: 0 0 5px 5px;
     padding: 0;
 }
